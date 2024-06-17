@@ -5,6 +5,7 @@ import tseslint from 'typescript-eslint';
 import reactRecommended from 'eslint-plugin-react/configs/recommended';
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
 import { fixupPluginRules } from '@eslint/compat';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 // waiting on official support for eslint-plugin-react-hooks
 // https://github.com/facebook/react/issues/28313
@@ -57,5 +58,6 @@ export default [
         ...globals.browser,
       },
     },
-  }
+  },
+  eslintConfigPrettier
 ]

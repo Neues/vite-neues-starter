@@ -4,14 +4,9 @@ import tseslint from "typescript-eslint";
 import reactRecommended from "eslint-plugin-react/configs/recommended.js";
 import globals from "globals";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
-import { fixupPluginRules } from "@eslint/compat";
 import eslintConfigPrettier from "eslint-config-prettier";
 import testingLibrary from "eslint-plugin-testing-library";
 import jestDom from "eslint-plugin-jest-dom";
-
-// waiting on official support for eslint-plugin-react-hooks and eslint-plugin-testing-library
-// https://github.com/testing-library/eslint-plugin-testing-library/issues/853
-// https://github.com/facebook/react/issues/28313
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 export default tseslint.config(
@@ -47,7 +42,7 @@ export default tseslint.config(
     name: "eslint-plugin-react-refresh, eslint-plugin-react-hooks",
     files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
     plugins: {
-      "react-hooks": fixupPluginRules(eslintPluginReactHooks),
+      "react-hooks": eslintPluginReactHooks,
       "react-refresh": reactRefresh,
     },
     rules: {
@@ -69,9 +64,7 @@ export default tseslint.config(
     name: "Tests",
     files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
     ...jestDom.configs["flat/recommended"],
-    plugins: {
-      "testing-library": fixupPluginRules(testingLibrary),
-    },
+    ...testingLibrary.configs["flat/react"],
   },
   {
     name: "js - no type check",

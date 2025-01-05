@@ -4,6 +4,7 @@ import tseslint from "typescript-eslint";
 import reactRecommended from "eslint-plugin-react/configs/recommended.js";
 import globals from "globals";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import eslintPluginReactCompiler from "eslint-plugin-react-compiler";
 import eslintConfigPrettier from "eslint-config-prettier";
 import testingLibrary from "eslint-plugin-testing-library";
 import jestDom from "eslint-plugin-jest-dom";
@@ -40,7 +41,7 @@ export default tseslint.config(
   // https://github.com/jsx-eslint/eslint-plugin-react?tab=readme-ov-file#configuration-new-eslintconfigjs
   {
     name: "eslint-plugin-react-refresh, eslint-plugin-react-hooks",
-    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    files: ["**/*.{jsx,mjsx,tsx,mtsx}"],
     plugins: {
       "react-hooks": eslintPluginReactHooks,
       "react-refresh": reactRefresh,
@@ -57,6 +58,14 @@ export default tseslint.config(
         ...globals.serviceworker,
         ...globals.browser,
       },
+    },
+  },
+  // eslint-plugin-react-compiler
+  {
+    name: "eslint-plugin-react-compiler",
+    files: ["**/*.{jsx,mjsx,tsx,mtsx}"],
+    plugins: {
+      "react-compiler": eslintPluginReactCompiler,
     },
   },
   // tests

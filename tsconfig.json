@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.ts", "vitest-setup.ts", ".husky/install.mjs"],
+  "include": ["src", "vite.config.ts", "vitest-setup.ts", "prettier.config.ts", ".husky/install.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

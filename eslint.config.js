@@ -1,25 +1,36 @@
-import reactRefresh from "eslint-plugin-react-refresh";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reactRecommended from "eslint-plugin-react/configs/recommended.js";
 import globals from "globals";
+import eslintPluginReactRefresh from "eslint-plugin-react-refresh";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginReactCompiler from "eslint-plugin-react-compiler";
 import eslintConfigPrettier from "eslint-config-prettier";
 import testingLibrary from "eslint-plugin-testing-library";
 import jestDom from "eslint-plugin-jest-dom";
 
+
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 export default tseslint.config(
   // https://typescript-eslint.io/packages/typescript-eslint/#config
   // default; eslint + ts related config with vite
   js.configs.recommended,
+  // https://typescript-eslint.io/getting-started/typed-linting
   ...tseslint.configs.recommendedTypeChecked, // consider ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
+  {
+    languageOptions: {
+      parserOptions: {
+        sourceType: 'module',
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   // eslint-plugin-react
   {
     name: "eslint-plugin-react",
-    files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+    files: ["**/*.{jsx,mjsx,tsx,mtsx}"],
     ...reactRecommended,
     languageOptions: {
       ...reactRecommended.languageOptions,
@@ -44,7 +55,7 @@ export default tseslint.config(
     files: ["**/*.{jsx,mjsx,tsx,mtsx}"],
     plugins: {
       "react-hooks": eslintPluginReactHooks,
-      "react-refresh": reactRefresh,
+      "react-refresh": eslintPluginReactRefresh,
     },
     rules: {
       "react-refresh/only-export-components": [

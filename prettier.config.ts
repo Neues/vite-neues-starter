@@ -9,7 +9,7 @@ const config: Config = {
   tabWidth: 4,
   semi: false,
   singleQuote: true,
-  jsxSingleQuote: true
+  jsxSingleQuote: true,
 };
 
 export default config;

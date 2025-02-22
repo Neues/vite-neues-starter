@@ -6,9 +6,9 @@ import eslintPluginReactRefresh from "eslint-plugin-react-refresh";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
 import eslintPluginReactCompiler from "eslint-plugin-react-compiler";
 import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 import testingLibrary from "eslint-plugin-testing-library";
 import jestDom from "eslint-plugin-jest-dom";
-
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 export default tseslint.config(
@@ -21,7 +21,7 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
-        sourceType: 'module',
+        sourceType: "module",
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
@@ -43,6 +43,7 @@ export default tseslint.config(
         ...globals.browser,
       },
     },
+    // https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
     rules: {
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
@@ -77,6 +78,19 @@ export default tseslint.config(
     files: ["**/*.{jsx,mjsx,tsx,mtsx}"],
     plugins: {
       "react-compiler": eslintPluginReactCompiler,
+    },
+  },
+  // eslint-plugin-jsx-a11y
+  {
+    name: "eslint-plugin-jsx-a11y",
+    files: ["**/*.{jsx,mjsx,tsx,mtsx}"],
+    ...eslintPluginJsxA11y.flatConfigs.recommended,
+    languageOptions: {
+      ...eslintPluginJsxA11y.flatConfigs.recommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
     },
   },
   // tests

@@ -2,7 +2,7 @@
 
 `Vite 6` + `React 19` + `Typescript` + `Vitest 3` + `React Testing Library` + `Prettier` + `Husky` + `lint-staged` + `Eslint 9` + relevant ESLint plugins
 
-This template provides a minimal React + Vite setup along with a correct Vitest + RTL setup and CI/CD with a robust set of ESLint plugins.
+This template is based on [create-vite's react-swc-ts template](https://github.com/vitejs/vite/tree/main/packages/create-vite) and provides a minimal React + Vite setup along with a correct Vitest + RTL setup and CI/CD with a robust set of ESLint plugins.
 
 There are several dozen React + vite templates but I found many have not yet made it to React 19, had not moved to the eslint flat config, remain on ESLint version 8, and lacked CI/CD configuration. I could also not find any templates which provided RTL along with the relevant linting. This motivated me to make my own template.
 

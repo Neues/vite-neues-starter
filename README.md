@@ -26,10 +26,9 @@ This template is using ESLint 9 and an [ESLint flat config file](https://eslint.
 - [typescript-eslint](https://typescript-eslint.io/getting-started/typed-linting/) with [recommended-type-checked](https://typescript-eslint.io/users/configs/#recommended-type-checked) and [stylistic-type-checked](https://typescript-eslint.io/users/configs/#stylistic-type-checked) rules
 - [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) with recommended rules
 
-- [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh)
 - [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 
-- [eslint-plugin-react-compiler](https://github.com/facebook/react/tree/main/compiler/packages/eslint-plugin-react-compiler)
+- [eslint-plugin-react-compiler](https://react.dev/learn/react-compiler#installing-eslint-plugin-react-compiler)
 
 - [eslint-plugin-testing-library](https://github.com/testing-library/eslint-plugin-testing-library)
 - [eslint-plugin-jest-dom](https://github.com/testing-library/eslint-plugin-jest-dom)

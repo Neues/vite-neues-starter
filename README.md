@@ -38,3 +38,7 @@ This template is using ESLint 9 and an [ESLint flat config file](https://eslint.
 - [eslint-plugin-jest-dom](https://github.com/testing-library/eslint-plugin-jest-dom)
 - [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+
+## Usage
+
+- React files should match the glob `'**/*.{jsx,mjsx,tsx,mtsx}'` and test files should match the glob `['**/__tests__/**/*.[jt]s?(x)','**/?(*.+(spec|test).[jt]s?(x)']` defined in `eslint.config.js`, though this can be changed to suit your needs.

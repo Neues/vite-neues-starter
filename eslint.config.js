@@ -9,6 +9,12 @@ import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
 import vitest from '@vitest/eslint-plugin';
 
+const reactFilesGlob = ['**/*.{jsx,mjsx,tsx,mtsx}'];
+const testFilesGlob = [
+	'**/__tests__/**/*.[jt]s?(x)',
+	'**/?(*.)+(spec|test).[jt]s?(x)',
+];
+
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 export default tseslint.config(
 	{
@@ -23,7 +29,7 @@ export default tseslint.config(
 			...tseslint.configs.recommendedTypeChecked, // consider ...tseslint.configs.strictTypeChecked,
 			...tseslint.configs.stylisticTypeChecked,
 		],
-		files: ['**/*.{ts,tsx}'],
+		files: ['**/*.{ts,tsx,mtsx}'],
 		languageOptions: {
 			ecmaVersion: 2020,
 			globals: globals.browser,
@@ -37,12 +43,17 @@ export default tseslint.config(
 	},
 	{
 		name: 'eslint-plugin-react - recommended',
-		files: ['**/*.{jsx,mjsx,tsx,mtsx}'],
+		files: reactFilesGlob,
+		settings: {
+			react: {
+				version: 'detect',
+			},
+		},
 		...react.configs.flat.recommended,
 	},
 	{
 		name: 'eslint-plugin-react - jsx-runtime',
-		files: ['**/*.{jsx,mjsx,tsx,mtsx}'],
+		files: reactFilesGlob,
 		...react.configs.flat['jsx-runtime'],
 	},
 	// this is a bit of a hack, they're not exporting their config correctly
@@ -51,7 +62,7 @@ export default tseslint.config(
 	// https://react.dev/blog/2024/10/21/react-compiler-beta-release#roadmap-to-stable
 	{
 		name: 'eslint-plugin-react-hooks',
-		files: ['**/*.{jsx,mjsx,tsx,mtsx}'],
+		files: reactFilesGlob,
 		plugins: { 'react-hooks': eslintPluginReactHooks },
 		rules: {
 			...eslintPluginReactHooks.configs.recommended.rules,
@@ -59,7 +70,7 @@ export default tseslint.config(
 	},
 	{
 		name: 'eslint-plugin-react-compiler',
-		files: ['**/*.{jsx,mjsx,tsx,mtsx}'],
+		files: reactFilesGlob,
 		plugins: {
 			'react-compiler': eslintPluginReactCompiler,
 		},
@@ -69,7 +80,7 @@ export default tseslint.config(
 	},
 	{
 		name: 'eslint-plugin-jsx-a11y',
-		files: ['**/*.{jsx,mjsx,tsx,mtsx}'],
+		files: reactFilesGlob,
 		...eslintPluginJsxA11y.flatConfigs.recommended,
 		languageOptions: {
 			...eslintPluginJsxA11y.flatConfigs.recommended.languageOptions,
@@ -82,17 +93,18 @@ export default tseslint.config(
 	// tests
 	{
 		name: 'eslint-plugin-testing-library',
-		files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+		files: testFilesGlob,
 		...eslintPluginTestingLibrary.configs['flat/react'],
 	},
 	{
 		name: 'eslint-plugin-vitest',
-		files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+		files: testFilesGlob,
 		...vitest.configs.recommended,
 	},
 	{
 		name: 'js - no type check',
 		files: ['**/*.js'],
+		...js.configs.recommended,
 		extends: [tseslint.configs.disableTypeChecked],
 	},
 	{

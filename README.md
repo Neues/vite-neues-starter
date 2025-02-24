@@ -1,4 +1,4 @@
-# Neues Vite Starter
+# Vite Neues Starter
 
 `Vite 6` + `React 19` + `Typescript` + `Vitest 3` + `React Testing Library` + `Prettier` + `Husky` + `lint-staged` + `Eslint 9` + relevant ESLint plugins
 

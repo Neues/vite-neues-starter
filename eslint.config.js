@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
+// eslint-disable-next-line n/no-extraneous-import
 import globals from 'globals';
 import react from 'eslint-plugin-react';
 import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
@@ -8,6 +9,8 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginTestingLibrary from 'eslint-plugin-testing-library';
 import vitest from '@vitest/eslint-plugin';
+import eslintPluginNode from 'eslint-plugin-n';
+import eslintPluginImportX from 'eslint-plugin-import-x';
 
 const reactFilesGlob = ['**/*.{jsx,mjsx,tsx,mtsx}'];
 const testFilesGlob = [
@@ -20,6 +23,9 @@ export default tseslint.config(
 	{
 		ignores: ['.husky/install.mjs', 'dist', 'src/tests/**/*.error.*'],
 	},
+	eslintPluginNode.configs['flat/recommended'],
+	eslintPluginImportX.flatConfigs.recommended,
+	eslintPluginImportX.flatConfigs.typescript,
 	{
 		// https://typescript-eslint.io/packages/typescript-eslint/#config
 		// default; eslint + ts related config with vite
@@ -31,7 +37,7 @@ export default tseslint.config(
 		],
 		files: ['**/*.{ts,tsx,mtsx}'],
 		languageOptions: {
-			ecmaVersion: 2020,
+			ecmaVersion: latest,
 			globals: globals.browser,
 			parserOptions: {
 				// https://typescript-eslint.io/packages/parser/#projectservice

@@ -15,7 +15,7 @@ describe('linting in react files', () => {
 
 		const filteredResults = ESLint.getErrorResults(results);
 
-		expect(filteredResults[0].errorCount).toBe(6);
+		expect(filteredResults[0].errorCount).toBe(7);
 		expect(filteredResults[0].messages[0].ruleId).toBe(
 			'react/no-children-prop'
 		);
@@ -30,5 +30,6 @@ describe('linting in react files', () => {
 		expect(filteredResults[0].messages[5].ruleId).toBe(
 			'react-compiler/react-compiler'
 		);
+		expect(filteredResults[0].messages[6].ruleId).toBe('n/no-process-exit');
 	});
 });

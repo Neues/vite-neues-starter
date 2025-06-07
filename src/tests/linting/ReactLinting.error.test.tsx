@@ -8,6 +8,7 @@ const Component = () => {
 	const ref = useRef(null);
 	const value = ref.current;
 	return value;
+	process.exit(1);
 };
 
 export default Component;

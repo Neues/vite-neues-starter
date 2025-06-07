@@ -1,10 +1,13 @@
+/// <reference types="vite/client" />
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
+// eslfint-disable-next-line n/no-missing-import import-x/no-unresolved
 import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
 	const [count, setCount] = useState(0);
+	const viteLogoUrl = new URL('/vite.svg', import.meta.url).href;
 	return (
 		<>
 			<div>
